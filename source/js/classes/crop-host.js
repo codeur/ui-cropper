@@ -103,7 +103,7 @@ angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCir
             drawScene();
         };
 
-        
+
 
         var focusOnCanvas = function () {
             elCanvas[0].focus();
@@ -242,6 +242,8 @@ angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCir
                 });
             }
 
+            ctx.canvas.ratio = null
+            resizeCanvas()
             drawScene();
         };
 
@@ -273,6 +275,37 @@ angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCir
                 drawScene();
             }
         };
+
+        var resizeCanvas = function (e) {
+          var parent = ctx.canvas.parentNode
+          if (parent.offsetWidth !== ctx.canvas.width || parent.offsetHeight !== ctx.canvas.height) {
+            console.log('Resize', parent.offsetWidth / parent.offsetHeight, ctx.canvas.width / ctx.canvas.height);
+            var ratio = ctx.canvas.width / ctx.canvas.height
+            console.log(ctx.canvas.ratio)
+            if (!ctx.canvas.ratio || typeof ctx.canvas.ratio === 'undefined') {
+              ctx.canvas.ratio = ctx.canvas.width / ctx.canvas.height
+            }
+
+            var newWidth = parent.offsetHeight * ctx.canvas.ratio
+
+            if (newWidth > parent.offsetWidth) {
+              ctx.canvas.width = parent.offsetWidth;
+              ctx.canvas.height = parent.offsetWidth / ctx.canvas.ratio;
+              ctx.canvas.width = ctx.canvas.height * ctx.canvas.ratio;
+            } else {
+              ctx.canvas.height = parent.offsetWidth;
+              ctx.canvas.width = parent.offsetWidth * 0.75 * ctx.canvas.ratio;
+              ctx.canvas.height = ctx.canvas.width / ctx.canvas.ratio;
+            }
+            ctx.canvas.style.marginLeft = ((parent.offsetWidth - ctx.canvas.width) / 2) + 'px'
+
+            // ctx.canvas.width = parent.offsetWidth;
+            // ctx.canvas.height = ctx.canvas.width / ctx.canvas.ratio;
+
+            theArea.setSize(theArea.getSize());
+            drawScene();
+          }
+        }
 
         var onMouseDown = function (e) {
             e.preventDefault();
@@ -385,7 +418,7 @@ angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCir
             if(theArea._disableCrop) {
                 return;
             }
-            
+
             if (image !== null && opts.disableKeyboardAccess !== true) {
                 var key = e.which;
                 switch (key) {
@@ -1014,6 +1047,8 @@ angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCir
         elCanvas.prop('tabindex', '0');
 
         elCanvas.on('keydown', onKeyDown);
+
+        window.addEventListener('resize', resizeCanvas);
 
         // CropHost Destructor
         this.destroy = function () {

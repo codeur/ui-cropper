@@ -4,10 +4,10 @@ var argv         = require('minimist')(process.argv.slice(2)),
     header       = require('gulp-header'),
     gutil        = require('gulp-util'),
     ngAnnotate   = require('gulp-ng-annotate'),
-    sass      = require('gulp-sass'),
+    sass         = require('gulp-sass'),
     refresh      = require('gulp-livereload'),
     prefix       = require('gulp-autoprefixer'),
-    cleanCSS    = require('gulp-clean-css'),
+    cleanCSS     = require('gulp-clean-css'),
     uglify       = require('gulp-uglify'),
     clean        = require('gulp-rimraf'),
     concat       = require('gulp-concat-util'),
@@ -69,8 +69,8 @@ var Config = {
 gulp.task('styles', function () {
     return gulp.src(Config.paths.source.scss + '/ui-cropper.scss')
         .pipe(sass())
-        .pipe(prefix({ 
-            browsers: ['last 2 version', '> 5%', 'safari 5', 'ie 8', 'ie 7', 'opera 12.1', 'ios 6', 'android 4'] 
+        .pipe(prefix({
+            browsers: ['last 2 version', '> 5%', 'safari 5', 'ie 8', 'ie 7', 'opera 12.1', 'ios 6', 'android 4']
         }))
         .pipe(gulp.dest(Config.paths.compileUnminified.css), {overwrite: true});
 });

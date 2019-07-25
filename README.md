@@ -25,9 +25,25 @@ or pick a Codepen to play around with it<br>
 We just moved this lib to new name, before you add it to your please do tests.
 
 
-## Contribution
+## Contributing
 
 If you want to contribute, please join our [gitter chat](https://gitter.im/CrackerakiUA/ui-cropper).
+
+```bash
+yarn install
+yarn run gulp
+```
+
+Add open `example/index.html` in your browser.
+
+To build JS:
+```bash
+yarn run gulp build
+```
+
+To release package:
+```
+
 
 ## Installing
 
@@ -62,7 +78,7 @@ You can checkout all options under [our wiki page](https://github.com/Crackeraki
 
 ## Contributors
 
-This project exists thanks to all the people who contribute. 
+This project exists thanks to all the people who contribute.
 <a href="https://github.com/CrackerakiUA/ui-cropper/graphs/contributors"><img src="https://opencollective.com/ui-cropper/contributors.svg?width=890&button=false" /></a>
 
 

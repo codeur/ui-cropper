@@ -29,7 +29,7 @@
       "email": "rick@rickdegraaff.nl"
     }
   ],
-  "name": "ui-cropper",
+  "name": "@codeursarl/ui-cropper",
   "prettyName": "uiCropper",
   "description": "Image crop directive for AngularJS, square, circle and rectangle areas. Working aspect. Features like export array and more comming.",
   "main": "compile/unminified/ui-cropper.js",
@@ -37,7 +37,7 @@
   "homepage": "https://crackerakiua.github.io/ui-cropper/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/CrackerakiUA/ui-cropper/"
+    "url": "https://github.com/codeur/ui-cropper/"
   },
   "scripts": {
     "build": "gulp build",
