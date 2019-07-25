@@ -42,21 +42,23 @@ yarn run gulp build
 ```
 
 To release package:
+```bash
+npm login # First, one time
+npm publish --access public
 ```
-
 
 ## Installing
 
-#### Download directly
+### Download directly
 [Download ui-cropper](https://github.com/CrackerakiUA/ui-cropper/archive/master.zip) files from GitHub
 
-#### Bower
+### Bower
 	bower install ui-cropper
 
-#### NPM
+### NPM
 	npm install ui-cropper
 
-#### Meteor
+### Meteor
 	meteor npm install --save ui-cropper
 
 ## How to Use
