@@ -54,6 +54,8 @@ example/
 screenshots/
 .travis.yml
 .eslint*
+.jshint*
 bower*
 gulpfile.js
 yarn.lock
+.gitattributes
